@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guesser Game</title>
+</head>
+<body>
+    <script>
+        // Set the range
+        let low = 1;
+        let high = 10;
+
+        // Function to generate a random number between low and high (inclusive)
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Generate the correct answer
+        let correct_ans = getRandomInt(low, high);
+
+        // Number of attempts
+        let attempts = 3;
+
+        // Game loop
+        for (let i = 0; i < attempts; i++) {
+            // Get user input
+            let userGuess = parseInt(prompt(`Guess a number between ${low} and ${high}:`));
+
+            // Check if the user's guess is correct
+            if (userGuess === correct_ans) {
+                alert('You Win!');
+                break;
+            } else if (userGuess < correct_ans) {
+                alert('Correct answer is greater!');
+            } else if (userGuess > correct_ans) {
+                alert('Correct answer is smaller!');
+            }
+
+            // If it's the last attempt and the user didn't guess correctly
+            if (i === attempts - 1) {
+                alert('You lose! The correct answer was ' + correct_ans);
+            }
+        }
+    </script>
+</body>
+</html>
